@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.javaee</groupId>
+	<artifactId>SampleProject</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>JavaEE 7 simple archetype</name>
+	<description>JavaEE 7 WAR simple project. Just the bare minimum to get started.</description>
+	<packaging>war</packaging>
+	
+	<properties>
+		<java.min.version>1.8</java.min.version>
+		<maven.min.version>3.0.0</maven.min.version>
+		<version.javaee_api>7.0</version.javaee_api>
+
+		<!-- We list the maven plugin versions explicitly -->
+		<!-- You can also move the version definitions from properties to build/plugins/plugin/version 
+			directly but this is easier to find and identify in case of build issues -->
+		<!-- In case you upgrade to a multi-module project later, ALWAYS move all 
+			properties, dependency management and build plugin definitions to common 
+			parent project -->
+		<version.compiler.plugin>3.1</version.compiler.plugin>
+		<version.war.plugin>2.5</version.war.plugin>
+	</properties>
+
+	<prerequisites>
+		<maven>${maven.min.version}</maven>
+	</prerequisites>
+
+	<!-- To start with java ee 7, this is the only dependency that we need -->
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${version.javaee_api}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- You could omit these, but it is always better to be explicit in describing 
+		how your project is built. Especially if you work in a team. -->
+	<build>
+		<plugins>
+			<!-- Our build is simple, we want a war file that contains classes compiled 
+				with JDK 1.8 and in UTF-8 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration>
+					<source>${java.min.version}</source>
+					<target>${java.min.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
