@@ -2,12 +2,8 @@ package com.example.javaee.model;
 
 import java.util.Date;
 
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PostLoad;
-import javax.persistence.PostUpdate;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-@MappedSuperclass
+//TODO we want attribtues from this class to be presetn on every entity that extends it
+//TODO you can use the Entity lifecycle event methods here(at the end of the file), or create your one EntityListener
 public class TraceAble {
 
     private Date creationDate;
@@ -41,21 +37,16 @@ public class TraceAble {
         this.loadedFromDB = loadedFromDB;
     }
 
-    @PostLoad
-    @PostUpdate
     public void postLoad() {
-        this.loadedFromDB = true;
+       //TODO make me usefull 
     }
     
-    @PreUpdate
     public void preUpdate() {
-        this.updateDate = new Date();
+      //TODO make me usefull 
     }
     
-    @PrePersist
     public void prePersist() {
-        this.creationDate = new Date();
-        this.updateDate = new Date();
+      //TODO make me usefull 
     }
     
 }

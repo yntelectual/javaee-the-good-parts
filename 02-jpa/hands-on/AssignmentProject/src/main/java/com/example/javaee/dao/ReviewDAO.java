@@ -19,16 +19,15 @@ public class ReviewDAO {
 
     public List<Review> getAllForBook(String isbn) {
         // TODO: implement loading of all Reviews for a book
-        return em.createQuery("from Review r where r.book.isbn=:isbn", Review.class).setParameter("isbn", isbn).getResultList();
+        return null;
     }
 
     public void persist(Review u) {
         // TODO: insert a new Review entry to DB
-        em.persist(u);
     }
 
     public Review update(Review u) {
         // TODO: update existing Review entry and return the new state
-        return em.merge(u);
+        return null;
     }
 }

@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import com.example.javaee.cdi.Trace;
 import com.example.javaee.model.Publisher;
-import com.example.javaee.model.Book;
 
 @Stateless
 @Trace
@@ -19,7 +18,8 @@ public class PublisherDAO {
     private EntityManager em;
 
     public List<Publisher> getAll() {
-        return em.createQuery("from Publisher p", Publisher.class).getResultList();
+        //TODO return all publishers
+        return null;
     }
 
     public Publisher loadById(Long id) {
@@ -28,7 +28,6 @@ public class PublisherDAO {
     }
 
     public void persist(Publisher u) {
-        em.persist(u);
     }
 
     public Publisher update(Publisher u) {

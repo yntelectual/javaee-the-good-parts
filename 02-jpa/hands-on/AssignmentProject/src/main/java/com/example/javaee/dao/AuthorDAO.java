@@ -18,21 +18,21 @@ public class AuthorDAO {
     private EntityManager em;
 
     public List<Author> getAll() {
-        return em.createQuery("from Author a", Author.class).getResultList();
+        //TODO return all authors
+        return null;
     }
 
     public Author loadById(Long id) {
         // TODO: load a single author with all its attributes
-        return em.createQuery("from Author a left join fetch a.books where a.id=:id", Author.class).setParameter("id", id).getSingleResult();
+        return null;
     }
 
     public void persist(Author u) {
         // TODO: insert a new author entry to DB
-        em.persist(u);
     }
 
     public Author update(Author u) {
         // TODO: update existing author entry and return the new state
-        return em.merge(u);
+        return null;
     }
 }

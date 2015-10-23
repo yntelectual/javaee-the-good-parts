@@ -1,7 +1,5 @@
 package com.example.javaee.model;
 
-import javax.persistence.Embeddable;
-
 /**
  * A simple address object
  * 
@@ -10,7 +8,6 @@ import javax.persistence.Embeddable;
  * TODO: addresses should not be stored in separate table,
  * but rather included in the table of the owning entity
  */
-@Embeddable
 public class Address {
 
     private String city;

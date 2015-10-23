@@ -3,18 +3,6 @@ package com.example.javaee.model;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PostLoad;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Transient;
-
 /**
  * The Author entity.
  * 
@@ -25,11 +13,8 @@ import javax.persistence.Transient;
  * entity
  *
  */
-@Entity
 public class Author extends TraceAble {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -37,14 +22,12 @@ public class Author extends TraceAble {
     // TODO store this as DB DATE not TIMESTAMP
     private Date dateOfBirth;
 
-    @Transient
     // TODO: should not be stored in DB obviously, but calculated when loaded - currDate - dateOfBirth / ms_in_year
     private long age;
 
     // TODO: do not load eagerly,
     // TODO: we want a FK column in the Book table named 'AUTHOR_ID'
     // TODO: make it possible to assign book to author by saving author
-    @OneToMany(cascade=CascadeType.MERGE,fetch=FetchType.LAZY,mappedBy="author")
     private Set<Book> books;
 
     // TODO: included in the author table
@@ -98,11 +81,8 @@ public class Author extends TraceAble {
         this.address = address;
     }
 
-    
-    @PostLoad
-    @PrePersist
-    @PreUpdate
-    public void calcAge(){
-        this.age = (new Date().getTime() - this.dateOfBirth.getTime()) / (1000*60*60*24*365);
+    // TODO use this to calculate the age after load from DB
+    public void calcAge() {
+        this.age = (new Date().getTime() - this.dateOfBirth.getTime()) / (1000 * 60 * 60 * 24 * 365);
     }
 }

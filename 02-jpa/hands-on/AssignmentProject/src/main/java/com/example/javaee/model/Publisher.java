@@ -3,10 +3,6 @@ package com.example.javaee.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  * The book publishing company.
@@ -19,14 +15,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class Publisher extends TraceAble {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     
     //TODO: lazy loaded, with FK in Book table named PUBLISHER_ID
-    @OneToMany
     private Set<Book> publishedBooks;
 
     //TODO: stored within publisher table
