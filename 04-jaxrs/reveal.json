@@ -1,0 +1,8 @@
+{
+	"controls": true,
+	"progress": true,
+	"height": 900,
+	"width": 1600,
+	"theme": "css/theme/sky.css"
+
+}
